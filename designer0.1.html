@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang=es>
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset='utf-8'> 
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="css/style.css" media="screen and (min-width: 800px) and (min-height: 600px) and (
+    orientation: landscape)"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/jquery-barcode.js"></script>
+    <script src="js/designer.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/image-loader.js"></script>
+
+  </head>
+  <body>
+    <section id="layouts" >
+        <div id="frontWrapper"></div>
+        <div id="backWrapper"></div>
+        <input type = "radio" name = "side" id = "front" value = "front" checked = "checked" />
+          <label for = "front">Front</label>
+        <input type = "radio" name = "side" id = "back" value = "back" />
+          <label for = "back">Back</label>
+    </section>
+    <div id="inputs">
+        <ul>
+            <li><a href="#tabs-1">Texto</a></li>
+            <li><a href="#tabs-2">Im&aacute;genes</a></li>
+            <li><a href="#tabs-3">Otro</a></li>
+        </ul>
+        <div id="tabs-1">
+            <select id="tableCols">
+                <option value="name">Nombre de Persona</option>
+                <option value="lastname">Apellidos</option>
+                <option value="id">Matricula</option>
+                <option value="programLarge">Nombre de carrera, escuela o facultad</option>
+                <option value="programShort">Clave del nombre de carrera, escuela o facultad</option>
+            </select>
+            <button id="dbElement"> Aceptar </button>
+            <input name="whatText" id="whatText" placeholder="Introduce texto"> 
+            <button id="newTextFix">Texto Fijo</button>
+        </div>
+        <div id="tabs-2">
+            Fondo frente<input type="file" id="newFront" class="imageFront" ><br/>
+            Fondo reverso<input type="file" id="newBack" class="imageBack" ><br/>
+            <button id="Person" /> Persona</button>
+            <input type = "checkbox"
+                 id = "dragIt"
+                 value = "false" /><br/>
+            <button id="barcode">C&oacute;digo de Barras</button>
+        </div>
+    </div>
+  </body>
+     
+</html>

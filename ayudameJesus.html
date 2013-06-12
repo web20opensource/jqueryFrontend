@@ -1,0 +1,229 @@
+<html ng-app>
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <script src="../fittext.js"></script>
+    <script src="../jquery.lettering-0.6.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="http://jquery-json.googlecode.com/files/jquery.json-2.2.min.js"></script>
+    <script src="http://jquery-websocket.googlecode.com/files/jquery.websocket-0.0.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css" />
+  
+
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+		  // Handler for .ready() called.
+			/*var elem = $("#resizable");
+			var x = $("#resizable").offset().left;
+		  var y = $("#resizable").offset().top;
+      // http://jsfiddle.net/1stein/eMXTQ/
+      var initDiagonal;
+      var initFontSize;*/
+
+      //$("#nombre").offset().left;
+     // $("#nombre").offset().top;
+
+      /*$(function() {
+          $("#resizable").resizable({
+              alsoResize: '#content',
+              containment: "parent",
+              create: function(event, ui) {
+                  initDiagonal = getContentDiagonal();
+                  initFontSize = parseInt($("#content").css("font-size"));
+              },
+              resize: function(e, ui) {
+                  var newDiagonal = getContentDiagonal();
+                  var ratio = newDiagonal / initDiagonal;
+                  $("#content").css("font-size", initFontSize + ratio * 3);
+              }
+          });
+      });*/
+
+
+      $("#newText").click(function(){
+          var newId = '_' + Math.random();
+
+
+          var $element = $('<div class="ui-widget-content ui-draggable ui-dialog-titlebar-close"  id="' + "g1"  + '" />').text('some text');
+
+
+          //append it to the DOM
+          $("#wrapper").append($element);
+
+          //make it "draggable" and "resizable"
+          $("#g1").text( $("#whatText").val() );
+
+          $element.draggable({ containment: "parent" }).resizable();
+      });
+
+      $(function(){
+        $("#nombre").draggable({ containment: "parent" }).resizable({alsoResize: '#nombre',containment: "parent"});
+      });
+
+      $(function(){
+        $("#matricula").draggable({ containment: "parent" }).resizable({alsoResize: '#matricula',containment: "parent"});
+      });
+
+      function getContentDiagonal() {
+          var contentWidth = $("#content").width();
+          var contentHeight = $("#content").height();
+          return contentWidth * contentWidth + contentHeight * contentHeight * 0.01;
+      }
+
+      $("#resizable").draggable({
+        containment: "parent",
+        scroll: false,
+        drag: function() {
+            var $this = $(this);
+            var thisPos = $this.position();
+            var parentPos = $this.parent().position();
+            var x = thisPos.left - parentPos.left;
+            var y = thisPos.top - parentPos.top;
+            $this.text(x + ", " + y + "," + $this.width() + "," + $this.height() +"," + parseInt(-1));
+            console.log(
+                      JSON.stringify([$(this).attr("id"),x,y,$(this).width(),$(this).height(),parseInt($(this).css("font-size")) ])
+                      );
+        }
+      });
+
+      $("#matricula").draggable({
+          containment: "parent",
+          scroll: false,
+          drag: function() {
+              var $this = $(this);
+              var thisPos = $this.position();
+              var parentPos = $this.parent().position();
+              var x = thisPos.left - parentPos.left;
+              var y = thisPos.top - parentPos.top;
+              $this.text(x + ", " + parseInt(y)  + "," + $this.width() + "," + $this.height() + "," + parseInt($this.css("font-size")) );
+            console.log(
+                      JSON.stringify([$(this).attr("id"),x,y,$(this).width(),$(this).height(),parseInt($(this).css("font-size")) ])
+                      );
+          }
+      });
+
+
+      $("#nombre").draggable({
+        containment: "parent",
+        scroll: false,
+        drag: function() {
+            var $this = $(this);
+            var thisPos = $this.position();
+            var parentPos = $this.parent().position();
+            var x = thisPos.left - parentPos.left;
+            var y = thisPos.top - parentPos.top;
+            $this.text(x + ", " + parseInt(y) + "," + $this.width() + "," + $this.height() + "," + parseInt($this.css("font-size")) ) ;
+            console.log(
+                      JSON.stringify([$(this).attr("id"),x,y,$(this).width(),$(this).height(),parseInt($(this).css("font-size")) ])
+                      );
+        }
+      });
+
+      $("#sendIt").click(function() {
+        
+          $.post("test.php", $("#nombre").serialize());
+        
+
+		});
+    });
+
+    </script>
+
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Tangerine', 'Cantarell' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+
+    <style type="text/css">
+
+      #wrapper{
+      	width : 324px;
+      	height : 204px;
+      }
+
+      #content{
+        font-size: 12px;
+        overflow: hidden;
+      }
+
+
+
+      #resizable { width: 50px; height: 50px; padding: 0.5em; }
+
+      #resizable h1 { text-align: center; margin: 0; }
+
+      #nombre{
+        width:50px;
+        height:50px;
+      }
+
+      #matricula{
+        width:80px;
+        height:35px;
+      }
+
+      .resizableText{
+          width: 50px;
+          height: 20px;
+      }
+
+      .wf-loading p {
+        font-family: serif
+      }
+      .wf-inactive p {
+        font-family: serif
+      }
+      .wf-active p {
+        font-family: 'Tangerine', serif;
+      }
+      .wf-loading h1 {
+        font-family: serif;
+        font-weight: 400;
+        font-size: 16px
+      }
+      .wf-inactive h1 {
+        font-family: serif;
+        font-weight: 400;
+        font-size: 16px
+      }
+      .wf-active h1 {
+        font-family: 'Cantarell', serif;
+        font-weight: 400;
+        font-size: 16px
+      }
+    </style>
+
+  </head>
+  <body>
+    <div>
+        <div id="wrapper" class="wrapper">
+                <div id="resizable" class="ui-widget-content">
+                    <h1 class="ui-widget-header"></h1>
+                </div>
+                <div id="matricula">MATRICULA</div>
+                <div id="nombre">NOMBRE PERSONA</div>
+        </div>
+        <div id="inputs">
+            <button id="newText"> Text </button>
+            <button id="newImage"> Image </button>
+            <button id="newPhoto"> Photo </button>
+            <input name="whatText" id="whatText" label="What text you want inside" type="input">
+        </div>
+    </div>
+    <div id="sendIt"> Enviar {id,x,y,width,height,font-size(+) || image(-1) }</div>
+    <div id="content"> </div>
+  </body>
+</html>
