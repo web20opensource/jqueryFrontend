@@ -12,6 +12,9 @@
     <script src="js/designer.js"></script>
     <script src="js/jquery.fittext.js"></script>
     <script src="js/image-loader.js"></script>
+    <script src="js/image-loader_2.js"></script>
+    <script src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+    <script src="js/json2xml.js"></script>
 
   </head>
   <body>
@@ -37,19 +40,26 @@
                 <option value="programLarge">Nombre de carrera, escuela o facultad</option>
                 <option value="programShort">Clave del nombre de carrera, escuela o facultad</option>
             </select>
-            <button id="dbElement"> Aceptar </button>
-            <input name="whatText" id="whatText" placeholder="Introduce texto"> 
-            <button id="newTextFix">Texto Fijo</button>
+            <button id="textDynamicField"> Aceptar </button>
+            <input name="whatText" id="whatText" placeholder="Etiqueta"> 
+            <button id="textField">Texto Fijo</button>
         </div>
         <div id="tabs-2">
             Fondo frente<input type="file" id="newFront" class="imageFront" ><br/>
             Fondo reverso<input type="file" id="newBack" class="imageBack" ><br/>
-            <button id="Person" /> Persona</button>
+            <button id="photo" /> Persona</button>
             <input type = "checkbox"
-                 id = "dragIt"
+                 id = "dragPhoto"
                  value = "false" /><br/>
             <button id="barcode">C&oacute;digo de Barras</button>
+            <input type = "checkbox"
+                 id = "dragBarcode"
+                 value = "false" /><br/>
         </div>
+        <button id="sendIt">Guardar</button>
+        <input id="xmlFileName" placeholder="Nombre del layout">
+        <button id="cancel">Cancelar</button>
+        <button id="openIt">Abrir otro...</button>
     </div>
   </body>
      

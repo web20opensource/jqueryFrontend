@@ -90,7 +90,7 @@ section#layouts{
 }
 
 
-.Person{
+.imageField{
     background-image: url(../img/nobody.jpg);
     /* 83px 95px */
     /*width:77px;
@@ -105,9 +105,11 @@ section#layouts{
     left: 14px;
 }
 
-.imageBackGroundSet{
+.imageBackGroundSet,.imageFrontGroundSet{
    z-index : 10;
 }
+
+
 
 .dragging{
     /*opacity: 0.5;*/

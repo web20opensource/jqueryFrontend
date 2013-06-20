@@ -10,21 +10,20 @@
  */
 
 (function($) {
-  
-  var namespace = 'imageFront';
+  var namespace = 'imageBack';
 
   function ImageLoader(element, options) {
-    if ( !this.isSupported ) { throw 'Older browsers are not supported.'; }
+    if ( !this.isSupported ) { throw 'Older browesers are not supported.'; }
 
     this.$element = $(element);
     var o = this.options = $.extend({}, $.fn.imageLoader.defaults, options);
     this.$placeholder = $( o.show );
+
     this.$element.on('change.' + namespace, $.proxy(this._onChange, this));
   }
 
   ImageLoader.prototype = {
     $: function (selector) {
-      alert("here in the selector from library.js");
       return this.$element.find(selector);
     },
     _onChange: function(e) {
