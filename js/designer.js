@@ -300,7 +300,7 @@ $().ready(function() {
 
         $('#frontWrapper').children('img , div').each(function(i) { 
             //console.log($(this).attr("id"));
-            console.log( json2xml( getObj.pos_xy( $(this) ) ) );
+            console.log(  getObj.pos_xy( $(this) )  );
             
 
         });
